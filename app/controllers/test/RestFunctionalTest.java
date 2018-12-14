@@ -10,6 +10,7 @@ import com.ning.http.client.FluentCaseInsensitiveStringsMap;
 import com.ning.http.client.multipart.*;
 import org.junit.Before;
 import play.Invoker;
+import play.Play;
 import play.classloading.enhancers.ControllersEnhancer;
 import play.libs.Codec;
 import play.mvc.*;
@@ -39,6 +40,8 @@ public abstract class RestFunctionalTest extends BaseTest {
     public static final String APPLICATION_JSON = "application/json";
 
     public static final String MULTIPART_FORM_DATA = "multipart/form-data";
+
+    public static final String SESSION_COOKIE = Play.configuration.getProperty("application.session.cookie" + "_SESSION");
 
     /**
      * The reponse to the last request.
@@ -93,6 +96,14 @@ public abstract class RestFunctionalTest extends BaseTest {
             savedCookies = new HashMap<>();
         }
         savedCookies.put(cookie.name, cookie);
+    }
+
+    public static Http.Cookie getSessionCookie() {
+        return getCookie(SESSION_COOKIE);
+    }
+
+    public static void setSessionCookie(Http.Cookie cookie) {
+        setCookie(cookie);
     }
 
     public static Http.Response GET(Object url) {
@@ -483,12 +494,23 @@ public abstract class RestFunctionalTest extends BaseTest {
         return request;
     }
 
-    public JsonObject getJsonResult() {
-        return getJsonResult(response);
+    /**
+     * Get the HTTP response as a JSON object.
+     *
+     * @param response The HTTP response
+     * @return The parsed JSON response
+     */
+    public static JsonObject getJsonResult(Http.Response response) {
+        return (JsonObject) new JsonParser().parse(getContent(response));
     }
 
-    public JsonObject getJsonResult(Http.Response response) {
-        return (JsonObject) new JsonParser().parse(getContent(response));
+    /**
+     * Get the last HTTP response as a JSON object.
+     *
+     * @return The parsed JSON response
+     */
+    public static JsonObject getJsonResult() {
+        return getJsonResult(response);
     }
 
     /**
@@ -496,7 +518,7 @@ public abstract class RestFunctionalTest extends BaseTest {
      *
      * @return The array of items
      */
-    protected JsonArray getItems() {
+    protected static JsonArray getItems() {
         JsonObject json = getJsonResult();
         return json.getAsJsonArray("items");
     }
@@ -506,9 +528,19 @@ public abstract class RestFunctionalTest extends BaseTest {
      *
      * @return The item
      */
-    protected JsonObject getItem() {
+    protected static JsonObject getItem() {
         JsonObject json = getJsonResult();
         return json.getAsJsonObject("item");
+    }
+
+    /**
+     * Extract the first item from an array of items from the response.
+     *
+     * @return The item
+     */
+    protected static JsonObject getFirstItem() {
+        JsonArray items = getItems();
+        return items.get(0).getAsJsonObject();
     }
 
     /**
@@ -516,7 +548,7 @@ public abstract class RestFunctionalTest extends BaseTest {
      *
      * @return The ID
      */
-    public String getId() {
+    public static String getId() {
         JsonObject json = getItem();
         return json.get("id").getAsString();
     }
