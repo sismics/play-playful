@@ -8,7 +8,7 @@ This module provides a set of libraries for Play! Framework 1.
 
 ```
 require:
-    - playful -> playful 1.0.0
+    - playful -> playful 1.3.0
 
 repositories:
     - playful:
