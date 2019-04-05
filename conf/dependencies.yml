@@ -1,4 +1,8 @@
-self: play -> playful 1.3.0
+self: play -> playful 1.4.0
+
+configurations:
+    - provided:
+          exclude: true
 
 require:
     - play

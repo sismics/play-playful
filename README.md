@@ -8,12 +8,12 @@ This module provides a set of libraries for Play! Framework 1.
 
 ```
 require:
-    - playful -> playful 1.3.0
+    - playful -> playful 1.4.0
 
 repositories:
-    - playful:
-        type:       http
-        artifact:   "http://release.sismics.com/repo/play/[module]-[revision].zip"
+    - sismicsNexusRaw:
+        type: http
+        artifact: "https://nexus.sismics.com/repository/sismics/[module]-[revision].zip"
         contains:
             - playful -> *
 ```
