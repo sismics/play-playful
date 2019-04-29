@@ -1,2 +1,3 @@
 510:play.plugins.AppBinder
+520:play.plugins.DisableIllegalAccessWarning
 530:play.plugins.UTCTimeZonePlugin
