@@ -431,7 +431,7 @@ public abstract class RestFunctionalTest extends BaseTest {
 
             @Override
             public Invoker.InvocationContext getInvocationContext() {
-                ActionInvoker.resolve(request, response);
+                ActionInvoker.resolve(request);
                 return new Invoker.InvocationContext(Http.invocationType, request.invokedMethod.getAnnotations(),
                         request.invokedMethod.getDeclaringClass().getAnnotations());
             }

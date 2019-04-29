@@ -1,4 +1,8 @@
 ## Change Log
+### Version 1.5.0 (2019-04-29)
+- Upgrade to Play 1.5.3
+- Disable Illegal Access warning (with Java 9+)
+- Remove DisableDocViewer plugin (already fixed in https://github.com/playframework/play1/issues/1103)
 ### Version 1.4.0 (2019-04-05)
 - Automate release
 - Add JSON helper
