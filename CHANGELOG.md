@@ -1,4 +1,8 @@
 ## Change Log
+### Version 1.6.0 (2019-05-02)
+- Upgrade to Java 11
+- Add CappedEventStream
+- Add Basic auth helper
 ### Version 1.5.0 (2019-04-29)
 - Upgrade to Play 1.5.3
 - Disable Illegal Access warning (with Java 9+)

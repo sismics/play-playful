@@ -1,4 +1,4 @@
-package helpers.request;
+package helpers.http;
 
 import play.mvc.Http;
 

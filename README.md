@@ -8,7 +8,7 @@ This module provides a set of libraries for Play! Framework 1.
 
 ```
 require:
-    - playful -> playful 1.4.0
+    - playful -> playful 1.6.0
 
 repositories:
     - sismicsNexusRaw:

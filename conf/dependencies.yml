@@ -1,4 +1,4 @@
-self: play -> playful 1.5.0
+self: play -> playful 1.6.0
 
 configurations:
     - provided:
@@ -6,7 +6,7 @@ configurations:
 
 require:
     - play
-    - com.sismics.sapparot -> sapparot 1.3.0
+    - com.sismics.sapparot -> sapparot 1.3.1
 
 repositories:
   - sismicsNexusMaven:
