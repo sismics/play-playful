@@ -101,7 +101,7 @@ public class PlayfulJavaExtensions extends JavaExtensions {
 
     public static BigDecimal fromCents(Long cents) {
         return BigDecimal.valueOf(cents)
-                .divideToIntegralValue(BigDecimal.valueOf(100));
+                .divide(BigDecimal.valueOf(100));
     }
 
     /**
