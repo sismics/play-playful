@@ -1,4 +1,6 @@
 ## Change Log
+### Version 1.6.3 (2020-04-24)
+- Fix base controller
 ### Version 1.6.2 (2020-04-24)
 - Fix fromCents
 ### Version 1.6.1 (2019-05-02)

@@ -37,6 +37,10 @@ public class RestController extends Controller {
         renderJSON(json);
     }
 
+    protected static void okJson(JsonObject json) {
+        renderJSON(json.toString());
+    }
+
     protected static void renderId(UUID id) {
         JsonObject json = new JsonObject();
         JsonObject item = new JsonObject();
