@@ -45,10 +45,6 @@ public class RestController extends Controller {
         renderJSON(json);
     }
 
-    protected static void okJson(JsonObject json) {
-        renderJSON(json.toString());
-    }
-
     protected static void badRequestJson() {
         JPA.setRollbackOnly();
         response.status = Http.StatusCode.BAD_REQUEST;

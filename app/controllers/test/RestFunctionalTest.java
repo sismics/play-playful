@@ -137,13 +137,11 @@ public abstract class RestFunctionalTest extends BaseTest {
     }
 
     /**
-     * sends a GET request to the application under tests.
+     * Sends a GET request to the application under tests.
      *
-     * @param url
-     *            relative url such as <em>"/products/1234"</em>
-     * @param followRedirect
-     *            indicates if request have to follow redirection (status 302)
-     * @return the response
+     * @param url Relative url such as <em>"/products/1234"</em>
+     * @param followRedirect Indicates if request have to follow redirection (status 302)
+     * @return The response
      */
     public static Http.Response GET(Object url, boolean followRedirect) {
         GET(url);
@@ -168,10 +166,9 @@ public abstract class RestFunctionalTest extends BaseTest {
     /**
      * sends a GET request to the application under tests.
      *
-     * @param request
-     * @param url
-     *            relative url such as <em>"/products/1234"</em>
-     * @return the response
+     * @param request The request
+     * @param url relative url such as <em>"/products/1234"</em>
+     * @return The response
      */
     public static Http.Response GET(Http.Request request, Object url) {
         String path = "";
@@ -224,14 +221,11 @@ public abstract class RestFunctionalTest extends BaseTest {
     /**
      * Sends a POST request to the application under tests.
      *
-     * @param request
-     * @param url
-     *            relative url such as <em>"/products/1234"</em>
-     * @param contenttype
-     *            content-type of the request
-     * @param body
-     *            posted data
-     * @return the response
+     * @param request The request
+     * @param url relative url such as <em>"/products/1234"</em>
+     * @param contenttype content-type of the request
+     * @param body posted data
+     * @return The response
      */
     public static Http.Response POST(Http.Request request, Object url, String contenttype, InputStream body) {
         String path = "";
@@ -260,13 +254,10 @@ public abstract class RestFunctionalTest extends BaseTest {
      * Sends a POST request to the application under tests as a multipart form.
      * Designed for file upload testing.
      *
-     * @param url
-     *            relative url such as <em>"/products/1234"</em>
-     * @param parameters
-     *            map of parameters to be posted
-     * @param files
-     *            map containing files to be uploaded
-     * @return the response
+     * @param url relative url such as <em>"/products/1234"</em>
+     * @param parameters map of parameters to be posted
+     * @param files map containing files to be uploaded
+     * @return The response
      */
     public static Http.Response POST(Object url, Map<String, String> parameters, Map<String, File> files) {
         return POST(newRequest(), url, parameters, files);
@@ -328,14 +319,11 @@ public abstract class RestFunctionalTest extends BaseTest {
     /**
      * Sends a PUT request to the application under tests.
      *
-     * @param request
-     * @param url
-     *            relative url such as <em>"/products/1234"</em>
-     * @param contenttype
-     *            content-type of the request
-     * @param body
-     *            data to send
-     * @return the response
+     * @param request The request
+     * @param url relative url such as <em>"/products/1234"</em>
+     * @param contenttype content-type of the request
+     * @param body data to send
+     * @return The response
      */
     public static Http.Response PUT(Http.Request request, Object url, String contenttype, String body) {
         String path = "";
@@ -366,10 +354,9 @@ public abstract class RestFunctionalTest extends BaseTest {
     /**
      * Sends a DELETE request to the application under tests.
      *
-     * @param request
-     * @param url
-     *            relative url eg. <em>"/products/1234"</em>
-     * @return the response
+     * @param request The request
+     * @param url relative url eg. <em>"/products/1234"</em>
+     * @return The response
      */
     public static Http.Response DELETE(Http.Request request, Object url) {
         String path = "";
@@ -467,8 +454,7 @@ public abstract class RestFunctionalTest extends BaseTest {
         makeRequest(request, response);
 
         if (response.status == 302) { // redirect
-            // if Location-header is pressent, fix it to "look like" a
-            // functional-test-url
+            // if Location-header is pressent, fix it to "look like" a functional-test-url
             Http.Header locationHeader = response.headers.get("Location");
             if (locationHeader != null) {
                 String locationUrl = locationHeader.value();
@@ -696,7 +682,7 @@ public abstract class RestFunctionalTest extends BaseTest {
      *
      * @param response
      *            server response
-     * @return the response body as an <em>utf-8 string</em>
+     * @return The response body as an <em>utf-8 string</em>
      */
     public static String getContent(Http.Response response) {
         byte[] data = response.out.toByteArray();
@@ -708,11 +694,20 @@ public abstract class RestFunctionalTest extends BaseTest {
     }
 
     /**
+     * Get the response as a string.
+     *
+     * @return The response
+     */
+    public String getResponseAsString() {
+        return getContent(response);
+    }
+
+    /**
      * obtains the response body as a string
      *
      * @param response
      *            server response
-     * @return the response body as an <em>utf-8 string</em>
+     * @return The response body as an <em>utf-8 string</em>
      */
     public static String getDirect(Http.Response response) {
         ByteArrayOutputStream os = new ByteArrayOutputStream();
@@ -732,7 +727,7 @@ public abstract class RestFunctionalTest extends BaseTest {
 
     public void sleep(int seconds) {
         try {
-            Thread.sleep(seconds * 1000);
+            Thread.sleep(seconds * 1_000);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
