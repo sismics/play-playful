@@ -1,4 +1,6 @@
 ## Change Log
+### Version 1.6.2 (2020-04-24)
+- Fix fromCents
 ### Version 1.6.1 (2019-05-02)
 - Fix build
 ### Version 1.6.0 (2019-05-02)

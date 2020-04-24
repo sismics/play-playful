@@ -1,4 +1,4 @@
-self: play -> playful 1.6.1
+self: play -> playful 1.6.2
 
 configurations:
     - provided:
