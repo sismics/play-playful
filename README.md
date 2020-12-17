@@ -1,3 +1,6 @@
+[![GitHub release](https://img.shields.io/github/release/sismics/play-playful.svg?style=flat-square)](https://github.com/sismics/play-playful/releases/latest)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+
 # play-playful plugin
 
 This module provides a set of libraries for Play! Framework 1.
@@ -8,7 +11,7 @@ This module provides a set of libraries for Play! Framework 1.
 
 ```
 require:
-    - playful -> playful 1.6.4
+    - playful -> playful 1.6.5
 
 repositories:
     - sismicsNexusRaw:
