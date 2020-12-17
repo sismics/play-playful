@@ -1,4 +1,6 @@
 ## Change Log
+### Version 1.6.4 (2020-12-17)
+- Build & deploy using Github Action
 ### Version 1.6.3 (2020-04-24)
 - Fix base controller
 ### Version 1.6.2 (2020-04-24)
