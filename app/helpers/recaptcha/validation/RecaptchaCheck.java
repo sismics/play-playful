@@ -17,6 +17,6 @@ public class RecaptchaCheck extends AbstractAnnotationCheck<Recaptcha> {
         if (!(value instanceof String)) {
             return false;
         }
-        return helpers.recaptcha.Recaptcha.get().verify((String) value);
+        return helpers.recaptcha.Recaptcha.get().verifyAndValidate((String) value);
     }
 }

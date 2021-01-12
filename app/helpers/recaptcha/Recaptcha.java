@@ -1,10 +1,10 @@
 package helpers.recaptcha;
 
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
+import com.google.gson.Gson;
 import com.sismics.sapparot.function.CheckedConsumer;
 import com.sismics.sapparot.function.CheckedFunction;
 import com.sismics.sapparot.okhttp.OkHttpHelper;
+import helpers.recaptcha.model.RecaptchaVerifyResponse;
 import okhttp3.FormBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -30,9 +30,16 @@ public class Recaptcha {
         client = createClient();
     }
 
-    public boolean verify(String response) {
+    public boolean verifyAndValidate(String response) {
+        RecaptchaVerifyResponse verifyResponse = verify(response);
+        return verifyResponse.success;
+    }
+
+    public RecaptchaVerifyResponse verify(String response) {
         if (isMock()) {
-            return true;
+            RecaptchaVerifyResponse verifyResponse = new RecaptchaVerifyResponse();
+            verifyResponse.success = true;
+            return verifyResponse;
         }
         Request request = new Request.Builder()
                 .url("https://www.google.com/recaptcha/api/siteverify")
@@ -41,10 +48,7 @@ public class Recaptcha {
                         .add("response", response)
                         .build()))
                 .build();
-        return execute(request, (r) -> {
-            JsonObject json = new JsonParser().parse(r.body().string()).getAsJsonObject();
-            return json.get("success").getAsBoolean();
-        },
+        return execute(request, (r) -> new Gson().fromJson(r.body().string(), RecaptchaVerifyResponse.class),
         (r) -> {
             throw new RuntimeException("Error getting recaptcha response, response was: " + r.body().string());
         });
