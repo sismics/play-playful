@@ -11,7 +11,7 @@ This module provides a set of libraries for Play! Framework 1.
 
 ```
 require:
-    - playful -> playful 1.6.5
+    - playful -> playful 1.7.0
 
 repositories:
     - sismicsNexusRaw:

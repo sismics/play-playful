@@ -1,4 +1,6 @@
 ## Change Log
+### Version 1.7.0 (2021-01-12)
+- Add support for reCAPTCHA v3
 ### Version 1.6.5 (2020-12-17)
 - Build & deploy using Github Action
 ### Version 1.6.3 (2020-04-24)
